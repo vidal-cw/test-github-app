@@ -10,7 +10,7 @@ on:
         description: Target Environment
         required: true
         type: boolean
-  worflow_dispatch:
+  workflow_dispatch:
     inputs:
       test:
         description: Ten
