@@ -32,5 +32,5 @@ jobs:
     runs-on: ubuntu-latest
     if: inputs.enviroment == 'staging'
     uses: ./.github/workflows/blank.yml
-      with:
-        is_staging: true
+    with:
+      is_staging: true
