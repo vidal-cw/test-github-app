@@ -28,7 +28,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Call the other worflow
-        if: inputs.enviroment == staging
+        if: inputs.enviroment == 'staging'
         uses: ./.github/workflows/blank.yml
         with:
           is_staging: true
