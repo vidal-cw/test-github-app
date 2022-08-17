@@ -28,9 +28,7 @@ jobs:
 
         
   call-workflow:
-    runs-on: ubuntu-latest
     needs: [build]
-    if: inputs.enviroment == 'staging'
     uses: ./.github/workflows/blank.yml
     with:
       is_staging: true
