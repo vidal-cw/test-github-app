@@ -29,6 +29,7 @@ jobs:
         
   call-workflow:
     name: Call
+    needs: [build]
     if: inputs.enviroment == 'staging'
     runs-on: ubuntu-latest
     steps:
