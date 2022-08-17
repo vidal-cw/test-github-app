@@ -28,11 +28,12 @@ jobs:
 
         
   call-workflow:
-    name: Call
     needs: [build]
     if: inputs.enviroment == 'staging'
     runs-on: ubuntu-latest
     steps:
-        - uses: ./.github/workflows/blank.yml
+        - uses: actions/checkout@v3
+        - name: Call
+          uses: ./.github/workflows/blank.yml
           with:
             is_staging: true
