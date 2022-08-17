@@ -10,6 +10,11 @@ on:
         description: Target Environment
         required: true
         type: boolean
+  worflow_dispatch:
+    inputs:
+      test:
+        description: Ten
+        required: false
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -35,6 +40,18 @@ jobs:
     
   test:
     runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo ${{ github.event.workflow }}
+  
+  test-dispatch:
+    runs-on: ubuntu-latest
+    if: github.event.workflow == '.github/workflows/caller.yml'
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
