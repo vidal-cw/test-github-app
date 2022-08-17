@@ -29,6 +29,7 @@ jobs:
         
   call-workflow:
     needs: [build]
+    if: inputs.enviroment == 'staging'
     uses: ./.github/workflows/blank.yml
     with:
       is_staging: true
