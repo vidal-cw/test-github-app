@@ -5,7 +5,7 @@ name: CI
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '52 * * * *'
   workflow_call:
     inputs:
       is_staging:
