@@ -4,6 +4,8 @@ name: CI
 
 # Controls when the workflow will run
 on:
+  schedule:
+    - cron: '* * * * *'
   workflow_call:
     inputs:
       is_staging:
@@ -37,9 +39,10 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-    
-  test:
+  
+  test-dispatch:
     runs-on: ubuntu-latest
+    if: github.event.workflow == '.github/workflows/blank.yml'
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -48,10 +51,10 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo ${{ github.event.workflow }}
-  
-  test-dispatch:
+
+  test-cron:
     runs-on: ubuntu-latest
-    if: github.event.workflow == '.github/workflows/caller.yml'
+    if: github.event.schedule == '* * * * *'
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
